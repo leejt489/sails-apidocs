@@ -1,0 +1,40 @@
+if symbol.ctx.name
+  section(id=symbol.ctx.name)
+      h3= symbol.ctx.name
+      h5.subheader
+      if !symbol.gtype && symbol.type
+        p
+          div(class=["label", "label-inverse", "radius", "ctx-type"])= symbol.type
+      else
+        p
+          mixin labelForSymbolType(symbol)
+          if symbol.ctx.string
+            span= symbol.ctx.string
+          if symbol.return
+            |  ->
+            span= symbol.return
+
+if symbol.hasParams
+  table.table.table-bordered.table-striped
+    thead
+      tr
+        th(style="width:20%") Option name
+        th(style="width:20%") Type
+        th Description
+    tbody
+      each tag in symbol.tags
+        if tag.type == 'param'
+          tr
+            td= tag.name
+            td= tag.types
+            td= tag.description
+
+.description !{symbol.description.full} !{symbol.description.extra}
+if symbol.code
+  pre
+    code.language-javascript
+      = symbol.code
+if symbol.jsfiddle
+  h5 jsFiddle
+  p
+    iframe(width="100%", height="300", src=symbol.jsfiddle , allowfullscreen="allowfullscreen", frameborder="0")
