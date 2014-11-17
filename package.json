@@ -1,6 +1,6 @@
 {
   "name": "sails-apidocs",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Automatically generate documentation for a Sails.js API from Sails blueprints and inline code documentation",
   "main": "./lib/index.js",
   "scripts": {
